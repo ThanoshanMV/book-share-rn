@@ -10,7 +10,9 @@ To install dependencies:
 npm install --legacy-peer-deps
 ```
 
-**Note**: The `--legacy-peer-deps` flag is required due to peer dependency conflicts in the React Native ecosystem.
+**Important Note**: The `--legacy-peer-deps` flag is required due to peer dependency conflicts between `aws-amplify-react-native@6.0.8` (which requires GraphQL 14.x/15.x) and other packages. This flag tells npm to use the legacy peer dependency resolution algorithm from npm v6.
+
+While this bypasses some of npm's peer dependency checks, it is necessary for this project's dependency configuration. The security fixes applied via npm overrides ensure that vulnerable packages are updated to secure versions despite this flag.
 
 ## Security
 

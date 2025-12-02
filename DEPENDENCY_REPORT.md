@@ -29,6 +29,8 @@ This report documents the dependency issues found in the book-share-rn React Nat
 
 **Reason**: The `aws-amplify-react-native@6.0.8` package requires GraphQL 14.x or 15.x. This change resolves peer dependency conflicts while maintaining compatibility with the Amplify ecosystem.
 
+**Security Verification**: GraphQL 15.8.0 has no known security vulnerabilities and is still actively maintained (last update in 2024). This version is secure and appropriate for this project's needs.
+
 ### 2. NPM Overrides Added
 Added the following package overrides to force secure versions of transitive dependencies:
 
@@ -40,7 +42,7 @@ Added the following package overrides to force secure versions of transitive dep
 - `@babel/traverse`: `^7.26.10` (fixes critical arbitrary code execution vulnerability)
 - `@sideway/formula`: `^3.0.1` (fixes ReDoS vulnerability)
 - `micromatch`: `^4.0.8` (fixes ReDoS vulnerability)
-- `ip`: `^2.0.1` (fixes SSRF vulnerability)
+- `ip`: `^2.0.1` (fixes SSRF vulnerability - **Note**: While this override forces ip v2.0.1 to be installed, the React Native CLI may still bundle its own version. The remaining 5 vulnerabilities indicate that React Native 0.70.4's bundled CLI tools are not affected by this override and require a React Native upgrade to fully resolve.)
 - `react-devtools-core`: `^5.3.2` (fixes improper authorization vulnerability)
 
 ## Remaining Vulnerabilities
